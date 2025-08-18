@@ -1,0 +1,588 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Aug  5 17:11:21 2025
+# Process ID         : 864098
+# Current directory  : /home/yeobi/AILayerNorm/SW
+# Command line       : vivado
+# Log file           : /home/yeobi/AILayerNorm/SW/vivado.log
+# Journal file       : /home/yeobi/AILayerNorm/SW/vivado.jou
+# Running On         : HW-HIT
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : AMD Ryzen 9 9950X 16-Core Processor
+# CPU Frequency      : 5737.136 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 32
+# Host memory        : 132527 MB
+# Swap memory        : 2046 MB
+# Total Virtual      : 134574 MB
+# Available Virtual  : 125325 MB
+#-----------------------------------------------------------
+start_gui
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu208ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu208ld/production/2.0/board.xml as part xczu58dr-fsvg1517-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu216ld:part0:2.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu216ld/production/2.0/board.xml as part xczu59dr-ffvf1760-2-i specified in board_part file is either invalid or not available
+WARNING: [Board 49-26] cannot add Board Part xilinx.com:zcu670ld:part0:1.0 available at /tools/xilinx/Vivado/2024.2/data/xhub/boards/XilinxBoardStore/boards/Xilinx/zcu670ld/1.0/board.xml as part xczu57dr-fsve1156-2-i specified in board_part file is either invalid or not available
+create_project Improved_AILN {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN} -part xczu9eg-ffvb1156-2-e
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/xilinx/Vivado/2024.2/data/ip'.
+set_property board_part xilinx.com:zcu102:part0:3.4 [current_project]
+add_files -norecurse {/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v /home/yeobi/ImprovedAILN/Source/Imp_Ex_Unit.v /home/yeobi/ImprovedAILN/Source/Imp_sqrt_lut.v /home/yeobi/ImprovedAILN/Source/cal_sqrt.v /home/yeobi/ImprovedAILN/Source/Imp_mult4b_lut.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse /home/yeobi/ImprovedAILN/Testbench/tb_cal_sqrt.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+add_files -norecurse /home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v
+update_compile_order -fileset sources_1
+remove_files  /home/yeobi/ImprovedAILN/Source/cal_sqrt.v
+create_ip -name div_gen -vendor xilinx.com -library ip -version 5.1 -module_name div_gen_0
+set_property -dict [list \
+  CONFIG.FlowControl {Blocking} \
+  CONFIG.OutTready {true} \
+  CONFIG.divisor_width {8} \
+  CONFIG.fractional_width {8} \
+  CONFIG.latency {23} \
+] [get_ips div_gen_0]
+generate_target {instantiation_template} [get_files {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}]
+INFO: [IP_Flow 19-1686] Generating 'Instantiation Template' target for IP 'div_gen_0'...
+update_compile_order -fileset sources_1
+generate_target all [get_files  {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}]
+INFO: [IP_Flow 19-1686] Generating 'Synthesis' target for IP 'div_gen_0'...
+INFO: [IP_Flow 19-1686] Generating 'Simulation' target for IP 'div_gen_0'...
+INFO: [IP_Flow 19-1686] Generating 'C Simulation' target for IP 'div_gen_0'...
+INFO: [IP_Flow 19-1686] Generating 'Test Bench' target for IP 'div_gen_0'...
+INFO: [IP_Flow 19-1686] Generating 'Change Log' target for IP 'div_gen_0'...
+catch { config_ip_cache -export [get_ips -all div_gen_0] }
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: div_gen_0
+export_ip_user_files -of_objects [get_files {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}]
+launch_runs div_gen_0_synth_1 -jobs 16
+INFO: [IP_Flow 19-6924] IPCACHE: Running cache check for IP inst: div_gen_0
+[Tue Aug  5 17:19:52 2025] Launched div_gen_0_synth_1...
+Run output will be captured here: /home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.runs/div_gen_0_synth_1/runme.log
+export_simulation -lib_map_path [list {modelsim=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/modelsim} {questa=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/questa} {xcelium=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/xcelium} {vcs=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/vcs} {riviera=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/riviera}] -of_objects [get_files {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}] -directory {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.ip_user_files/sim_scripts} -ip_user_files_dir {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.ip_user_files} -ipstatic_source_dir {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.ip_user_files/ipstatic} -use_ip_compiled_libs -force -quiet
+set_property top Imp_cal_sqrt [current_fileset]
+update_compile_order -fileset sources_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'Imp_Ex2_Unit'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from '/tools/xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'Imp_Ex2_Unit' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj Imp_Ex2_Unit_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Source/Imp_mult4b_lut.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Imp_mult4b_lut
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Imp_Ex2_Unit
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
+xvhdl --incr --relax -prj Imp_Ex2_Unit_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.gen/sources_1/ip/div_gen_0/sim/div_gen_0.vhd" into library xil_defaultlib
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [VRFC 10-3107] analyzing entity 'div_gen_0'
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [Common 17-344] 'execute_script' was cancelled
+INFO: [Vivado 12-5357] 'compile' step aborted
+INFO: [Common 17-344] 'launch_simulation' was cancelled
+export_ip_user_files -of_objects  [get_files /home/yeobi/ImprovedAILN/Testbench/tb_cal_sqrt.v] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 /home/yeobi/ImprovedAILN/Testbench/tb_cal_sqrt.v
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse /home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v
+update_compile_order -fileset sim_1
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'Imp_Ex2_Unit'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from '/tools/xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'Imp_Ex2_Unit' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj Imp_Ex2_Unit_vlog.prj
+xvhdl --incr --relax -prj Imp_Ex2_Unit_vhdl.prj
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xbip_utils_v3_0_14 -L axi_utils_v2_0_10 -L xbip_pipe_v3_0_10 -L xbip_dsp48_wrapper_v3_0_6 -L mult_gen_v12_0_22 -L floating_point_v7_0_24 -L div_gen_v5_1_23 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Imp_Ex2_Unit_behav xil_defaultlib.Imp_Ex2_Unit xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L xbip_utils_v3_0_14 -L axi_utils_v2_0_10 -L xbip_pipe_v3_0_10 -L xbip_dsp48_wrapper_v3_0_6 -L mult_gen_v12_0_22 -L floating_point_v7_0_24 -L div_gen_v5_1_23 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot Imp_Ex2_Unit_behav xil_defaultlib.Imp_Ex2_Unit xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-9380] size mismatch in mixed-language port association of VHDL port 's_axis_dividend_tdata' [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:74]
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package xbip_utils_v3_0_14.xbip_utils_v3_0_14_pkg
+Compiling package div_gen_v5_1_23.div_gen_v5_1_23_viv_comp
+Compiling package xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv_comp
+Compiling package axi_utils_v2_0_10.axi_utils_v2_0_10_pkg
+Compiling package ieee.math_real
+Compiling package axi_utils_v2_0_10.global_util_pkg
+Compiling package axi_utils_v2_0_10.axi_utils_comps
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package div_gen_v5_1_23.div_gen_pkg
+Compiling package ieee.std_logic_signed
+Compiling package unisim.vcomponents
+Compiling package div_gen_v5_1_23.pkg_addsub
+Compiling module xil_defaultlib.Imp_mult4b_lut
+Compiling architecture xilinx of entity axi_utils_v2_0_10.axi_slave_2to1 [\axi_slave_2to1(c_a_tdata_width=...]
+Compiling architecture synth of entity div_gen_v5_1_23.c_twos_comp_viv [\c_twos_comp_viv(c_width=16,c_ai...]
+Compiling architecture virtex of entity div_gen_v5_1_23.cmp2s_v [\cmp2s_v(c_bus_width=16,c_regist...]
+Compiling architecture synth of entity div_gen_v5_1_23.c_twos_comp_viv [\c_twos_comp_viv(c_width=8,c_ain...]
+Compiling architecture virtex of entity div_gen_v5_1_23.cmp2s_v [\cmp2s_v(c_ainit_val="00000001",...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture muxcy_v of entity unisim.MUXCY [muxcy_default]
+Compiling architecture xorcy_v of entity unisim.XORCY [xorcy_default]
+Compiling architecture rtl of entity div_gen_v5_1_23.c_addsub_lut6 [\c_addsub_lut6(c_width=9,c_add_m...]
+Compiling architecture synth of entity div_gen_v5_1_23.c_addsub_viv [\c_addsub_viv(c_a_width=9,c_b_wi...]
+Compiling architecture virtex of entity div_gen_v5_1_23.addsubreg_v [\addsubreg_v(c_bus_width=9,c_ain...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture rtl of entity div_gen_v5_1_23.c_addsub_lut6 [\c_addsub_lut6(c_width=9,c_add_m...]
+Compiling architecture synth of entity div_gen_v5_1_23.c_addsub_viv [\c_addsub_viv(c_a_width=9,c_b_wi...]
+Compiling architecture virtex of entity div_gen_v5_1_23.addsubreg_v [\addsubreg_v(c_bus_width=9,c_has...]
+Compiling architecture virtex of entity div_gen_v5_1_23.dividervdc_v [\dividervdc_v(bus_num=16,bus_div...]
+Compiling architecture synth of entity div_gen_v5_1_23.c_twos_comp_viv [\c_twos_comp_viv(c_width=9,c_ain...]
+Compiling architecture virtex of entity div_gen_v5_1_23.cmp2s_v [\cmp2s_v(c_bus_width=9,c_registe...]
+Compiling architecture synth of entity div_gen_v5_1_23.c_twos_comp_viv [\c_twos_comp_viv(c_width=17,c_ai...]
+Compiling architecture virtex of entity div_gen_v5_1_23.cmp2s_v [\cmp2s_v(c_bus_width=17,c_regist...]
+Compiling architecture synth of entity div_gen_v5_1_23.bip_sdivider_synth [\bip_sdivider_synth(c_xdevicefam...]
+Compiling architecture synth of entity div_gen_v5_1_23.div_gen_synth [\div_gen_synth(c_xdevicefamily="...]
+Compiling architecture xilinx of entity axi_utils_v2_0_10.glb_srl_fifo [\glb_srl_fifo(width=24,depth=8,h...]
+Compiling architecture xilinx of entity axi_utils_v2_0_10.glb_ifx_master [\glb_ifx_master(width=24,depth=8...]
+Compiling architecture synth of entity xbip_pipe_v3_0_10.xbip_pipe_v3_0_10_viv [\xbip_pipe_v3_0_10_viv(c_latency...]
+Compiling architecture synth of entity div_gen_v5_1_23.div_gen_v5_1_23_viv [\div_gen_v5_1_23_viv(c_xdevicefa...]
+Compiling architecture xilinx of entity div_gen_v5_1_23.div_gen_v5_1_23 [\div_gen_v5_1_23(c_xdevicefamily...]
+Compiling architecture div_gen_0_arch of entity xil_defaultlib.div_gen_0 [div_gen_0_default]
+Compiling module xil_defaultlib.Imp_Ex2_Unit
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot Imp_Ex2_Unit_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "Imp_Ex2_Unit_behav -key {Behavioral:sim_1:Functional:Imp_Ex2_Unit} -tclbatch {Imp_Ex2_Unit.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source Imp_Ex2_Unit.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'Imp_Ex2_Unit_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+set_property top tb_Imp_cal_sqrt [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+update_compile_order -fileset sim_1
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from '/tools/xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_Imp_cal_sqrt' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_Imp_cal_sqrt
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '0' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2063] Module <cal_sqrt> not found while processing module instance <u_cal_sqrt> [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:13]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+ERROR: [Common 17-69] Command failed: ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_Imp_cal_sqrt
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '0' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+ERROR: [VRFC 10-2063] Module <Imp_cal_sqrt> not found while processing module instance <u_cal_sqrt> [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:13]
+ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-99] Step results log file:'/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/elaborate.log'
+ERROR: [USF-XSim-62] 'elaborate' step failed with error(s). Please check the Tcl console output or '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/elaborate.log' file for more information.
+ERROR: [Vivado 12-4473] Detected error while running simulation. Please correct the issue and retry this operation.
+ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+ERROR: [Common 17-69] Command failed: ERROR: [Common 17-39] 'launch_simulation' failed due to earlier errors.
+
+launch_simulation
+Command: launch_simulation 
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-72] Using boost library from '/tools/xilinx/Vivado/2024.2/tps/boost_1_72_0'
+INFO: [USF-XSim-7] Finding pre-compiled libraries...
+INFO: [USF-XSim-11] File '/tools/xilinx/Vivado/2024.2/data/xsim/xsim.ini' copied to run dir:'/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-54] Inspecting design source files for 'tb_Imp_cal_sqrt' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Imp_cal_sqrt
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Source/Imp_sqrt_lut.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Imp_sqrt_lut
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.Imp_sqrt_lut
+Compiling module xil_defaultlib.Imp_cal_sqrt
+Compiling module xil_defaultlib.tb_Imp_cal_sqrt
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_Imp_cal_sqrt_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "tb_Imp_cal_sqrt_behav -key {Behavioral:sim_1:Functional:tb_Imp_cal_sqrt} -tclbatch {tb_Imp_cal_sqrt.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Time resolution is 1 ps
+source tb_Imp_cal_sqrt.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'tb_Imp_cal_sqrt_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '0' seconds
+Time resolution is 1 ps
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '0' seconds
+Time resolution is 1 ps
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '0' seconds
+Time resolution is 1 ps
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+relaunch_sim
+Command: launch_simulation -step compile -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xvlog --incr --relax -prj tb_Imp_cal_sqrt_vlog.prj
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Imp_cal_sqrt
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Source/Imp_sqrt_lut.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Imp_sqrt_lut
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_Imp_cal_sqrt
+Waiting for jobs to finish...
+No pending jobs, compilation finished.
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+Command: launch_simulation -step elaborate -simset sim_1 -mode behavioral
+INFO: [Vivado 12-12493] Simulation top is 'tb_Imp_cal_sqrt'
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim'
+xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: /tools/xilinx/Vivado/2024.2/bin/unwrapped/lnx64.o/xelab --incr --debug typical --relax --mt 8 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_Imp_cal_sqrt_behav xil_defaultlib.tb_Imp_cal_sqrt xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4100] "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+WARNING: [XSIM 43-4100] "/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.sim/sim_1/behav/xsim/glbl.v" Line 6. Module glbl has a timescale but at least one module in design doesn't have timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.Imp_sqrt_lut
+Compiling module xil_defaultlib.Imp_cal_sqrt
+Compiling module xil_defaultlib.tb_Imp_cal_sqrt
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_Imp_cal_sqrt_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+Time resolution is 1 ps
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+WARNING: [filemgmt 56-199] Attempt to get parsing info during refresh. "On-the-fly" syntax checking information may be incorrect. [/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v:]
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+close_sim
+INFO: [Simtcl 6-16] Simulation closed

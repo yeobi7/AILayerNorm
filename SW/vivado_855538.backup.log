@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Aug  5 17:00:50 2025
+# Process ID         : 855538
+# Current directory  : /home/yeobi/AILayerNorm/SW
+# Command line       : vivado
+# Log file           : /home/yeobi/AILayerNorm/SW/vivado.log
+# Journal file       : /home/yeobi/AILayerNorm/SW/vivado.jou
+# Running On         : HW-HIT
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : AMD Ryzen 9 9950X 16-Core Processor
+# CPU Frequency      : 600.000 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 32
+# Host memory        : 132527 MB
+# Swap memory        : 2046 MB
+# Total Virtual      : 134574 MB
+# Available Virtual  : 124740 MB
+#-----------------------------------------------------------
+start_gui
+ERROR: [Common 17-211] Error loading jvm.

@@ -1,0 +1,86 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:34:34 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Aug  5 17:11:21 2025
+# Process ID         : 864098
+# Current directory  : /home/yeobi/AILayerNorm/SW
+# Command line       : vivado
+# Log file           : /home/yeobi/AILayerNorm/SW/vivado.log
+# Journal file       : /home/yeobi/AILayerNorm/SW/vivado.jou
+# Running On         : HW-HIT
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 22.04.5 LTS
+# Processor Detail   : AMD Ryzen 9 9950X 16-Core Processor
+# CPU Frequency      : 5737.136 MHz
+# CPU Physical cores : 16
+# CPU Logical cores  : 32
+# Host memory        : 132527 MB
+# Swap memory        : 2046 MB
+# Total Virtual      : 134574 MB
+# Available Virtual  : 125325 MB
+#-----------------------------------------------------------
+start_gui
+create_project Improved_AILN {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN} -part xczu9eg-ffvb1156-2-e
+set_property board_part xilinx.com:zcu102:part0:3.4 [current_project]
+add_files -norecurse {/home/yeobi/ImprovedAILN/Source/Imp_Ex2_Unit.v /home/yeobi/ImprovedAILN/Source/Imp_Ex_Unit.v /home/yeobi/ImprovedAILN/Source/Imp_sqrt_lut.v /home/yeobi/ImprovedAILN/Source/cal_sqrt.v /home/yeobi/ImprovedAILN/Source/Imp_mult4b_lut.v}
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse /home/yeobi/ImprovedAILN/Testbench/tb_cal_sqrt.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+add_files -norecurse /home/yeobi/ImprovedAILN/Source/Imp_cal_sqrt.v
+update_compile_order -fileset sources_1
+remove_files  /home/yeobi/ImprovedAILN/Source/cal_sqrt.v
+create_ip -name div_gen -vendor xilinx.com -library ip -version 5.1 -module_name div_gen_0
+set_property -dict [list \
+  CONFIG.FlowControl {Blocking} \
+  CONFIG.OutTready {true} \
+  CONFIG.divisor_width {8} \
+  CONFIG.fractional_width {8} \
+  CONFIG.latency {23} \
+] [get_ips div_gen_0]
+generate_target {instantiation_template} [get_files {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}]
+update_compile_order -fileset sources_1
+generate_target all [get_files  {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}]
+catch { config_ip_cache -export [get_ips -all div_gen_0] }
+export_ip_user_files -of_objects [get_files {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}]
+launch_runs div_gen_0_synth_1 -jobs 16
+wait_on_run div_gen_0_synth_1
+export_simulation -lib_map_path [list {modelsim=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/modelsim} {questa=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/questa} {xcelium=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/xcelium} {vcs=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/vcs} {riviera=/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.cache/compile_simlib/riviera}] -of_objects [get_files {{/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.srcs/sources_1/ip/div_gen_0/div_gen_0.xci}}] -directory {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.ip_user_files/sim_scripts} -ip_user_files_dir {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.ip_user_files} -ipstatic_source_dir {/home/yeobi/ImprovedAILN/Vivado Project/Improved_AILN/Improved_AILN.ip_user_files/ipstatic} -use_ip_compiled_libs -force -quiet
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top Imp_cal_sqrt [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+launch_simulation
+export_ip_user_files -of_objects  [get_files /home/yeobi/ImprovedAILN/Testbench/tb_cal_sqrt.v] -no_script -reset -force -quiet
+remove_files  -fileset sim_1 /home/yeobi/ImprovedAILN/Testbench/tb_cal_sqrt.v
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+add_files -fileset sim_1 -norecurse /home/yeobi/ImprovedAILN/Testbench/tb_Imp_cal_sqrt.v
+update_compile_order -fileset sim_1
+launch_simulation
+source Imp_Ex2_Unit.tcl
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top tb_Imp_cal_sqrt [get_filesets sim_1]
+set_property top_lib xil_defaultlib [get_filesets sim_1]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sim_1
+relaunch_sim
+relaunch_sim
+launch_simulation
+source tb_Imp_cal_sqrt.tcl
+relaunch_sim
+relaunch_sim
+relaunch_sim
+relaunch_sim
+close_sim
+close_sim
