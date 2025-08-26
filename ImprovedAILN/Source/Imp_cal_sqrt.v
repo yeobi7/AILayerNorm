@@ -24,7 +24,7 @@ module Imp_cal_sqrt (
     reg [15:0]  c_temp_i,       n_temp_i;      // Holds original input data for rounding
     reg [7:0]   c_temp_sqrt,    n_temp_sqrt;   // Holds the floored sqrt value
     reg [7:0]   c_temp_o,       n_temp_o;
-    reg         c_done,         n_done;
+    //reg         c_done,         n_done;
 
 
     // --- Register ---
@@ -88,7 +88,7 @@ module Imp_cal_sqrt (
             c_temp_i     <= 16'd0;
             c_temp_sqrt  <= 8'd0;
             c_temp_o     <= 8'd0;
-            c_done       <= 1'd0;
+            //c_done       <= 1'd0;
         end 
         else 
         begin
@@ -96,7 +96,7 @@ module Imp_cal_sqrt (
             c_temp_i     <= n_temp_i;
             c_temp_sqrt  <= n_temp_sqrt;        
             c_temp_o     <= n_temp_o;
-            c_done       <= n_done;
+            //c_done       <= n_done;
         end
     end
 
@@ -150,7 +150,7 @@ module Imp_cal_sqrt (
         endcase  
     end
 
-
+    /*
     // n_done
     always@(*)
     begin
@@ -159,9 +159,11 @@ module Imp_cal_sqrt (
             DONE    :                           n_done = 1'b1;
         endcase
     end
+    */
+
 
     // Output
-    assign o_done = c_done;
-    assign o_sqrt = (c_done) ? c_temp_o : 8'd0;
+    assign o_done = (c_state == DONE);
+    assign o_sqrt = (c_state == DONE) ? c_temp_o : 8'd0;
 
 endmodule

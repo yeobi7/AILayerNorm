@@ -1,6 +1,7 @@
 //==========================================================================
 // Module: Imp_Ex_Unit
-// Description: Accumulated (Ex) N 9-bit inputs, and averaged.
+// Description: Accumulated (Ex) N 8-bit inputs, and averaged.i
+// Using Divider ip 
 //==========================================================================
 
 /*
@@ -160,6 +161,12 @@ endmodule
 */
 
 
+//==========================================================================
+// Module: Imp_Ex_Unit
+// Description: Squared and accumulated (Ex) N 8-bit inputs, and averaged.
+// Divide Using shift  
+//==========================================================================
+
 module Imp_Ex_Unit #(
     parameter N = 8                             // # of input
 )(
@@ -173,10 +180,10 @@ module Imp_Ex_Unit #(
 );
 
     // FSM state
-    localparam IDLE   = 3'd0;
-    localparam ACC    = 3'd1;
-    localparam DIVIDE = 3'd2; 
-    localparam DONE   = 3'd3;
+    localparam IDLE   = 2'd0;
+    localparam ACC    = 2'd1;
+    localparam DIVIDE = 2'd2; 
+    localparam DONE   = 2'd3;
 
     // bit width
     localparam DATA_W    = 8;
@@ -195,8 +202,9 @@ module Imp_Ex_Unit #(
     reg signed [N:0]   n_Ex,      c_Ex;
 
     // 
-    wire Ex_ready;
-    assign Ex_ready = (c_cnt_acc == N-1);
+    // wire Ex_ready;
+    // assign Ex_ready = (c_cnt_acc == N-1);
+    
 
     wire signed [EXT_WIDTH-1:0] temp_acc;
     assign temp_acc =  { {SHIFT{c_acc[ACC_WIDTH-1]}}, c_acc };
@@ -225,12 +233,13 @@ module Imp_Ex_Unit #(
     begin
         n_state = c_state;
         case (c_state)
-            IDLE   : if (i_valid)               n_state = ACC;
-            ACC    : if (c_cnt_acc == N-1)      n_state = DIVIDE;
-            DIVIDE :                            n_state = DONE;
-            DONE   :                            n_state = IDLE;
+            IDLE   : if (i_valid)                n_state = ACC;
+            ACC    : if (c_cnt_acc == N-1)       n_state = DIVIDE;
+            DIVIDE :                             n_state = DONE;
+            DONE   :                             n_state = IDLE;
         endcase
     end
+    
 
     // n_cnt_acc
     always @(*)

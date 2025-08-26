@@ -24,15 +24,33 @@ begin
     i_clk = 1'd0;   i_rstn = 1'd0;  i_start = 1'd0;
     #1 i_rstn = 1'd1;   #1 i_rstn = 1'd0;   #2 i_rstn = 1'd1;
 
-    #5 i_start = 1'd1;
+    #5  i_start = 1'd1; 
+        i_data = 16'd4000;    
+    #10 i_start = 1'd0;
+    
+    #35 i_start = 1'd1;
+        i_data = 16'd1000;
+    #10 i_start = 1'd0;
+    
+    #35 i_start = 1'd1;
+        i_data = 16'd40000;
+    #10 i_start = 1'd0;
 
-    #10  i_data = 16'd4000;
-    #100 i_data = 16'd1000;
-    #100 i_data = 16'd40000;      
-    #100 i_data = 16'd100;
-    #100 i_data = 16'd4;
-    #100 i_data = 16'd5326;
-    #100 i_data = 16'd11094;
+    #35 i_start = 1'd1;      
+        i_data = 16'd100;   
+    #10 i_start = 1'd0;
+    
+    #35 i_start = 1'd1;
+        i_data = 16'd4;
+    #10 i_start = 1'd0;
+
+    #35 i_start = 1'd1;
+        i_data = 16'd5326;  
+    #10 i_start = 1'd0;
+    
+    #35 i_start = 1'd1;    
+        i_data = 16'd11094;
+    #10 i_start = 1'd0;
 end
 
 endmodule
