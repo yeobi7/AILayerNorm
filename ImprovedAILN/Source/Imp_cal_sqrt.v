@@ -6,7 +6,7 @@
 module Imp_cal_sqrt (
     input            i_clk,
     input            i_rstn,
-    input            i_start,
+    input            i_valid,
     input    [15:0]  i_data,
     output   [7:0]   o_sqrt,
     output           o_done
@@ -108,7 +108,7 @@ module Imp_cal_sqrt (
     begin
         n_state = c_state;
         case (c_state)
-            IDLE    :   if (i_start)            n_state = Stage1;
+            IDLE    :   if (i_valid)            n_state = Stage1;
             Stage1  :                           n_state = Stage2;
             Stage2  :                           n_state = DONE;
             DONE    :                           n_state = IDLE;
@@ -121,7 +121,7 @@ module Imp_cal_sqrt (
     begin
         n_temp_i = c_temp_i;
         case (c_state)
-            IDLE    :   if (i_start)            n_temp_i = i_data;
+            IDLE    :   if (i_valid)            n_temp_i = i_data;
         endcase
     end
 

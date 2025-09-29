@@ -1,182 +1,20 @@
 //==========================================================================
 // Module: Imp_Ex_Unit
-// Description: Accumulated (Ex) N 8-bit inputs, and averaged.i
-// Using Divider ip 
-//==========================================================================
-
-/*
-
-module Imp_Ex_Unit #(
-    parameter N = 8                             // # of input
-)(
-    input                           i_clk,
-    input                           i_rstn,
-    input                           i_valid,
-    input  signed [7:0]             i_x,        // -127 ~ 127
-
-    output                          o_Ex_done,
-    output signed [8:0] o_Ex                    // EX_WIDTH
-);
-
-    // FSM state
-    localparam IDLE   = 3'd0;
-    localparam ACC    = 3'd1;
-    localparam DIVIDE = 3'd2; 
-    localparam DONE   = 3'd3;
-
-    // bit width
-    localparam DATA_W    = 8;
-    localparam CNT_WIDTH = $clog2(N);
-    localparam ACC_WIDTH = DATA_W + CNT_WIDTH; 
-    localparam EX_WIDTH  = DATA_W;
-
-    // Divider IP bit width (Quotient + Remainder)
-    localparam DIVIDEND_W = 16;     // Dividend Width = 16
-    localparam DIVISOR_W  = 7;      // Divisor width = 7
-    localparam DOUT_WIDTH = DIVIDEND_W + DIVISOR_W;     // quotient + remainder = 23
-
-    /////////////// F/F /////////////////
-    reg [2:0]                   n_state,   c_state;
-    reg signed [ACC_WIDTH-1:0]  n_acc,     c_acc;
-    reg [CNT_WIDTH-1:0]         n_cnt_acc, c_cnt_acc;
-    reg signed [N:0]   n_Ex,      c_Ex;
-
-    /////////////// Divider IP port ////////////////
-    wire                            div_Acc_tvalid;
-    wire                            div_Acc_tready;
-    wire signed [DIVIDEND_W-1:0]     div_Acc_tdata;
-
-    wire                            div_N_tvalid;
-    wire                            div_N_tready;
-    wire        [DIVISOR_W-1:0]     div_N_tdata;
-
-    wire                            div_Ex_tvalid;
-    wire                            div_Ex_tready;
-    wire        [DOUT_WIDTH-1:0]    div_Ex_tdata;
-    wire signed [EX_WIDTH-1:0]      div_quotient;
-    wire signed [DIVIDEND_W-1:0]    quot_full;
-
-
-    // =================== Xilinx Divider Generator IP ===================
-    div_gen_0 U_DIV (
-        .aclk(i_clk),
-
-        // Dividend Channel (Acc)
-        .s_axis_dividend_tvalid(div_Acc_tvalid),
-        .s_axis_dividend_tready(div_Acc_tready),
-        .s_axis_dividend_tdata (div_Acc_tdata),
-
-        // Divisor Channel (N)
-        .s_axis_divisor_tvalid (div_N_tvalid),
-        .s_axis_divisor_tready (div_N_tready),
-        .s_axis_divisor_tdata  (div_N_tdata),
-
-        // Output Channel (Ex)
-        .m_axis_dout_tvalid    (div_Ex_tvalid),
-        .m_axis_dout_tready    (div_Ex_tready),
-        .m_axis_dout_tdata     (div_Ex_tdata)
-    );
-    //=====================================================================
-
-    // Extract only the quotient from the IP output
-    assign quot_full = div_Ex_tdata[DOUT_WIDTH-1 -: DIVIDEND_W];    // = div_Ex_tdata[22:7]
-    assign div_quotient = quot_full[EX_WIDTH-1:0];                  // = quot_full[8:0]
-
-
-    // F/F
-    always @(posedge i_clk or negedge i_rstn)
-    begin
-        if (!i_rstn)
-        begin
-            c_state   <= IDLE;
-            c_acc     <= 0;
-            c_cnt_acc <= 0;
-            c_Ex      <= 0;
-        end
-        else
-        begin
-            c_state   <= n_state;
-            c_acc     <= n_acc;
-            c_cnt_acc <= n_cnt_acc;
-            c_Ex      <= n_Ex;
-        end
-    end
-
-    // n_state
-    always @(*)
-    begin
-        n_state = c_state;
-        case (c_state)
-            IDLE   : if (i_valid)                                           n_state = ACC;
-            ACC    : if (c_cnt_acc == N-1)                                  n_state = DIVIDE;
-            DIVIDE : if (div_Acc_tready && div_N_tready && div_Ex_tvalid)   n_state = DONE;
-            DONE   :                                                        n_state = IDLE;
-        endcase
-    end
-
-    // n_cnt_acc
-    always @(*)
-    begin
-        n_cnt_acc = c_cnt_acc;
-        case (c_state)
-            IDLE :                  n_cnt_acc = 0;
-            ACC  : if (i_valid)     n_cnt_acc = c_cnt_acc + 1;
-        endcase
-    end
-
-    // n_acc
-    always @(*)
-    begin
-        n_acc = c_acc;
-        case (c_state)
-            IDLE :                  n_acc = 0;
-            ACC  : if (i_valid)     n_acc = c_acc + i_x;
-        endcase
-    end
-
-
-    // n_Ex
-    always @(*)
-    begin
-        n_Ex = c_Ex;
-        case (c_state)
-            IDLE   :                        n_Ex = 0;
-            DIVIDE : if (div_Ex_tvalid)     n_Ex = div_quotient;
-        endcase
-    end
-
-    // Divider IP control signal
-    assign div_Acc_tvalid  = (c_state == DIVIDE);
-    assign div_N_tvalid    = (c_state == DIVIDE);
-    assign div_Acc_tdata   = {{(DIVIDEND_W-ACC_WIDTH){c_acc[ACC_WIDTH-1]}}, c_acc};
-    assign div_N_tdata     = N[DIVISOR_W-1:0];  // N[6:0]
-    assign div_Ex_tready = 1'b1;
-
-    // output
-    assign o_Ex      = (c_state == DONE) ? c_Ex : 0;
-    assign o_Ex_done = (c_state == DONE);
-
-endmodule
-
-*/
-
-
-//==========================================================================
-// Module: Imp_Ex_Unit
 // Description: Squared and accumulated (Ex) N 8-bit inputs, and averaged.
 // Divide Using shift  
 //==========================================================================
 
 module Imp_Ex_Unit #(
-    parameter N = 8                             // # of input
+    parameter N         = 128,       // # of input
+    parameter DATA_W    = 8                           
 )(
     input                           i_clk,
     input                           i_rstn,
     input                           i_valid,
-    input  signed [7:0]             i_x,        // -127 ~ 127
+    input  signed [DATA_W*N-1:0]      i_x,        // -127 ~ 127
 
     output                          o_Ex_done,
-    output signed [8:0] o_Ex                    // EX_WIDTH
+    output signed [DATA_W-1:0]      o_Ex                  
 );
 
     // FSM state
@@ -186,80 +24,155 @@ module Imp_Ex_Unit #(
     localparam DONE   = 2'd3;
 
     // bit width
-    localparam DATA_W    = 8;
-    localparam CNT_WIDTH = $clog2(N);
-    localparam SHIFT     = CNT_WIDTH;
-    localparam ACC_WIDTH = DATA_W + CNT_WIDTH; 
-    localparam EXT_WIDTH = ACC_WIDTH + SHIFT;
-    localparam EX_WIDTH  = DATA_W;
-
+    
+    localparam CHUNK_SIZE    = 16;
+    localparam NUM_CHUNK     = N / CHUNK_SIZE;
+    localparam CNT_WIDTH     = $clog2(NUM_CHUNK); 
+    localparam P_SUM_WIDTH   = DATA_W + $clog2(CHUNK_SIZE); 
+    localparam ACC_WIDTH     = P_SUM_WIDTH + CNT_WIDTH;    
+    localparam SHIFT         = $clog2(N);
+    localparam ROUND_BIAS    = (1 << (SHIFT - 1));              // rounding bias
 
 
     /////////////// F/F /////////////////
-    reg [2:0]                   n_state,   c_state;
-    reg signed [ACC_WIDTH-1:0]  n_acc,     c_acc;
-    reg [CNT_WIDTH-1:0]         n_cnt_acc, c_cnt_acc;
-    reg signed [N:0]   n_Ex,      c_Ex;
+    reg         [1:0]                   n_state,        c_state;
+    reg signed  [ACC_WIDTH-1:0]         n_acc,          c_acc;
+    reg         [CNT_WIDTH-1:0]         n_cnt_acc,      c_cnt_acc;
+    reg         [CNT_WIDTH-1:0]         n_cnt_at,       c_cnt_at;     // count_adder_tree
+    reg signed  [7:0]                   n_Ex,           c_Ex;
+    // reg signed  [P_SUM_WIDTH-1:0]       n_partial_sum,  c_partial_sum;
 
-    // 
-    // wire Ex_ready;
-    // assign Ex_ready = (c_cnt_acc == N-1);
-    
 
-    wire signed [EXT_WIDTH-1:0] temp_acc;
-    assign temp_acc =  { {SHIFT{c_acc[ACC_WIDTH-1]}}, c_acc };
+    /////////////// Wire ///////////////
+    wire signed [DATA_W-1:0]            selected_x[CHUNK_SIZE-1:0];
+    wire        [DATA_W*CHUNK_SIZE-1:0] at_i;
+    wire signed [P_SUM_WIDTH-1:0]       partial_sum;
+    wire                                at_en;          // adder tree enable
+    wire                                at_done;        // adder tree done
+
+
+
+
+    /////////////// Select a 16-element chunk from the input vector ///////////////
+    genvar i;
+    generate
+        for (i = 0; i < CHUNK_SIZE; i = i + 1) begin : gen_mux
+            assign selected_x[i] = i_x[(c_cnt_acc * CHUNK_SIZE * DATA_W) + (i * DATA_W) +: DATA_W];
+        end
+    endgenerate
+
+
+    /////////////// Flatten input -> Input of Adder tre ///////////////
+    genvar j;
+    generate
+        for (j = 0; j < CHUNK_SIZE; j = j + 1) begin : gen_flatten
+            assign at_i[(j+1)*DATA_W-1 -: DATA_W] = selected_x[j];
+        end
+    endgenerate
+
+
+    // adder_tree module instance
+
+    assign at_en = (c_state == ACC);
+
+    adder_tree #(
+        .DBW(DATA_W),
+        .N(CHUNK_SIZE)
+    ) u_adder_tree(
+        .clk(i_clk),
+        .arst_n(i_rstn),
+        .wdata(at_i),
+        .en(at_en),  
+        .rvalid(at_done),
+        .rdata(partial_sum)
+        // .rdata(c_partial_sum)
+    );
+
+
+    // Rounding 
+    wire        [ACC_WIDTH:0]   acc_rounded;
+    wire signed [DATA_W-1:0]    avg_ex;
+
+    assign acc_rounded = $signed(c_acc) + ROUND_BIAS;
+    assign avg_ex      = acc_rounded >> SHIFT;
+
+
+
 
     // F/F
     always @(posedge i_clk or negedge i_rstn)
     begin
         if (!i_rstn)
         begin
-            c_state   <= IDLE;
-            c_acc     <= 0;
-            c_cnt_acc <= 0;
-            c_Ex      <= 0;
+            c_state         <= IDLE;
+            c_acc           <= 0;
+            c_cnt_acc       <= 0;
+            c_cnt_at        <= 0;
+            c_Ex            <= 0;
+            // c_partial_sum   <= 0;
         end
         else
         begin
-            c_state   <= n_state;
-            c_acc     <= n_acc;
-            c_cnt_acc <= n_cnt_acc;
-            c_Ex      <= n_Ex;
+            c_state         <= n_state;
+            c_acc           <= n_acc;
+            c_cnt_at        <= n_cnt_at;
+            c_cnt_acc       <= n_cnt_acc;
+            c_Ex            <= n_Ex;
+            // c_partial_sum   <= n_partial_sum;
         end
     end
+
+
+ 
 
     // n_state
     always @(*)
     begin
         n_state = c_state;
         case (c_state)
-            IDLE   : if (i_valid)                n_state = ACC;
-            ACC    : if (c_cnt_acc == N-1)       n_state = DIVIDE;
-            DIVIDE :                             n_state = DONE;
-            DONE   :                             n_state = IDLE;
+            IDLE   : if (i_valid)                                                   n_state = ACC;
+            ACC    : if ((c_cnt_acc == NUM_CHUNK-1)&&(c_cnt_at == NUM_CHUNK-1))     n_state = DIVIDE;
+            DIVIDE :                                                                n_state = DONE;
+            DONE   :                                                                n_state = IDLE;
         endcase
     end
     
+
 
     // n_cnt_acc
     always @(*)
     begin
         n_cnt_acc = c_cnt_acc;
         case (c_state)
-            IDLE :                  n_cnt_acc = 0;
-            ACC  : if (i_valid)     n_cnt_acc = c_cnt_acc + 1;
+            IDLE :                                  n_cnt_acc = 0;
+            ACC  : if (c_cnt_acc < NUM_CHUNK-1)     n_cnt_acc = c_cnt_acc + 1;
         endcase
     end
+
+
+
+    // n_cnt_at
+    always @(*)
+    begin
+        n_cnt_at = c_cnt_at;
+        case (c_state)
+            IDLE  :                                 n_cnt_at = 0;
+            ACC   : if (at_done)                    n_cnt_at = c_cnt_at + 1'b1;
+        endcase
+    end
+
+
 
     // n_acc
     always @(*)
     begin
         n_acc = c_acc;
         case (c_state)
-            IDLE :                  n_acc = 0;
-            ACC  : if (i_valid)     n_acc = c_acc + i_x;
+            IDLE :                                  n_acc = 0;
+            ACC  : if (at_done && c_cnt_at > 0)     n_acc = c_acc + partial_sum;
         endcase
     end
+
 
 
     // n_Ex
@@ -267,10 +180,22 @@ module Imp_Ex_Unit #(
     begin
         n_Ex = c_Ex;
         case (c_state)
-            IDLE   :     n_Ex = 0;
-            DIVIDE :     n_Ex = temp_acc >> SHIFT;
+            IDLE   :                n_Ex = 0;
+            DIVIDE :                n_Ex = avg_ex;
         endcase
     end
+
+
+    // // n_partial_sum
+    // always @(*)
+    // begin
+    //     n_partial_sum = c_partial_sum;
+    //     case (c_state)
+    //         IDLE   :                n_partial_sum = 0;
+    //         DIVIDE :                n_partial_sum = ;
+    //     endcase
+    // end
+
 
 
     // output

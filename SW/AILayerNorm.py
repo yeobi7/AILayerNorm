@@ -155,11 +155,10 @@ class ImprovedAILayerNorm(nn.Module):
         Ex = x_q.sum(dim=1, keepdim=True)
 
 
-        # 3) Hybrid Squaring Ex2 (수정된 코드)
-        # x_int는 float이지만 정수 값을 가짐. 연산을 위해 long 타입으로 변환
+        # 3) Hybrid Squaring Ex2 
         X_abs = x_int.abs().long()
 
-        # 상위 4비트(H)와 하위 4비트(L) 분리
+        # 상위 4비트, 하위 4비트 분리
         H = X_abs >> 4
         L = X_abs & 0x0F  # 0x0F는 0b1111, 하위 4비트만 남기는 마스크
 
@@ -168,34 +167,29 @@ class ImprovedAILayerNorm(nn.Module):
         L_sq = self.square_lut[L]
         H_x_L = H * L
         
-        # 각 항을 계산하고 더해서 최종 제곱값을 구함
         x_squared_int = H_sq * 256.0 + H_x_L * 32.0 + L_sq
         
-        # x_int^2에 scale_in^2을 곱해 x_q^2와 동일한 스케일로 보정
         x_squared_q = x_squared_int * (scale_in ** 2)
 
-        # 최종 제곱값들의 합을 구함
         Ex2 = x_squared_q.sum(dim=1, keepdim=True)
-        # 
+        
 
         # 4) mean & var
         mu  = Ex / self.N
         var = Ex2 / self.N - mu*mu
 
 
-        # 5) 1/sqrt(var) via sqrt_rounded
-        # 분산을 16비트 정수로 변환합니다.
+        # 5) 1/sqrt(var) 
         var_int = round_ste.apply(var).clamp(1, 2**16-1).long()
 
-        # sqrt_rounded 함수는 단일 정수 값에 대해 동작하므로,
-        # 배치 내 각 원소에 대해 함수를 적용합니다.
+
         std_int = torch.tensor(
             [sqrt_rounded(v.item()) for v in var_int.flatten()],
             device=var.device,
-            dtype=torch.float32 # 이후 나눗셈을 위해 float으로 변환
+            dtype=torch.float32 
         ).view_as(var_int)
 
-        # 0으로 나누는 것을 방지하고 역수를 계산합니다.
+        # 0으로 나누는 것 방지
         inv_std = 1.0 / std_int.clamp(min=self.eps)
 
 
@@ -243,11 +237,10 @@ class ImprovedAILayerNorm_no_round(nn.Module):
         Ex = x_q.sum(dim=1, keepdim=True)
 
 
-        # 3) Hybrid Squaring Ex2 (수정된 코드)
-        # x_int는 float이지만 정수 값을 가짐. 연산을 위해 long 타입으로 변환
+        # 3) Hybrid Squaring Ex2 
         X_abs = x_int.abs().long()
 
-        # 상위 4비트(H)와 하위 4비트(L) 분리
+        # 상위 4비트, 하위 4비트 분리
         H = X_abs >> 4
         L = X_abs & 0x0F  # 0x0F는 0b1111, 하위 4비트만 남기는 마스크
 
@@ -256,34 +249,29 @@ class ImprovedAILayerNorm_no_round(nn.Module):
         L_sq = self.square_lut[L]
         H_x_L = H * L
         
-        # 각 항을 계산하고 더해서 최종 제곱값을 구함
         x_squared_int = H_sq * 256.0 + H_x_L * 32.0 + L_sq
         
-        # x_int^2에 scale_in^2을 곱해 x_q^2와 동일한 스케일로 보정
         x_squared_q = x_squared_int * (scale_in ** 2)
 
-        # 최종 제곱값들의 합을 구함
         Ex2 = x_squared_q.sum(dim=1, keepdim=True)
-        # 
+        
 
         # 4) mean & var
         mu  = Ex / self.N
         var = Ex2 / self.N - mu*mu
 
 
-        # 5) 1/sqrt(var) via sqrt_rounded
-        # 분산을 16비트 정수로 변환합니다.
+        # 5) 1/sqrt(var)
         var_int = round_ste.apply(var).clamp(1, 2**16-1).long()
 
-        # sqrt_rounded 함수는 단일 정수 값에 대해 동작하므로,
-        # 배치 내 각 원소에 대해 함수를 적용합니다.
+
         std_int = torch.tensor(
             [sqrt_no_rounded(v.item()) for v in var_int.flatten()],
             device=var.device,
-            dtype=torch.float32 # 이후 나눗셈을 위해 float으로 변환
+            dtype=torch.float32 
         ).view_as(var_int)
 
-        # 0으로 나누는 것을 방지하고 역수를 계산합니다.
+        # 0으로 나누는 것 방지
         inv_std = 1.0 / std_int.clamp(min=self.eps)
 
 
